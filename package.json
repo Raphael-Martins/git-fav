@@ -1,0 +1,23 @@
+{
+  "name": "git-fav",
+  "version": "1.0.0",
+  "description": "refazendo um projeto antigo do curso para treinar. este e um app que salva favoritos no github",
+  "main": "index.js",
+  "scripts": {
+    "start": "lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Raphael-Martins/git-fav.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Raphael-Martins/git-fav/issues"
+  },
+  "homepage": "https://github.com/Raphael-Martins/git-fav#readme",
+  "dependencies": {
+    "lite-server": "^2.6.1"
+  }
+}
