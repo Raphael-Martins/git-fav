@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* sets start */
+
+* {
+  /*zera as config padroes do css, tirando todos os valores que sao passados naturalmente facilitando manipular os valores*/
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  font-size: 6.55%; /* permite trabalhar com "em" como se fosse pixel: 1em = 1px */
+
+  --ff-primary: 'Poppins', sans-serif;
+  --text-color: #303030;
+
+  --hue: 194;
+  --primary-color: hsl(var(--hue), 100%, 63%);
+}
+
+.sr-only {
+  /* torna um elemento nao visivel, mas ainda no conteudo, permitindo que leitores de tela o vejam */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+/* sets end */
+/* window start */
+
+body {
+  font-size: 16rem;
+  color: var(--text-color);
+  background-color: rgb(249, 249, 244);
+}
+
+body * {
+  font-family: var(--ff-primary);
+}
+
+#app {
+  max-width: 500rem;
+  margin: auto;
+}
+
+/* window end */
+/* header start*/
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin: 30rem 0 20rem 0;
+}
+header > h1 {
+  font-size: 20rem;
+  text-transform: uppercase;
+}
+
+.search > input {
+  max-width: 150rem;
+
+  border-radius: 4rem 0 0 4rem;
+  border-color: #3030305f;
+  border-width: 1rem;
+
+  margin-right: -6rem;
+  padding: 3rem;
+}
+.search > button {
+  background-color: var(--primary-color);
+
+  width: 26rem;
+  height: 26.5rem;
+
+  border-radius: 0 4rem 4rem 0;
+  border: none;
+
+  cursor: pointer;
+}
+
+.search > button:hover{
+  filter: brightness(1.1);
+}
+
+/* header end */
+/* table start*/
+table {
+  border-collapse: collapse;
+  border-radius: 5rem;
+
+  width: 100%;
+  
+  box-shadow: 4px 3px 6px 1px rgba(0, 0, 0, 0.23);
+}
+table * {
+  /* aplica isso a todos os elementos dentro do elemento selecionado  */
+  font-size: 14rem;
+  color: var(--text-color);
+  
+
+}
+table th {
+  text-align: left;
+  background-color: var(--primary-color);
+  padding: 15rem;
+}
+table th:first-child {
+  border-top-left-radius: 4rem;
+}
+table th:last-child{
+  border-top-right-radius: 4rem;
+}
+
+table td{
+  padding: 15rem;
+}
+table tr:nth-child(even) {
+  /* vai pegar todos os filhos par, ou impar, o que for passado de parametro */
+  background: #eee;
+}
+table tr:nth-child(odd) {
+  background: #ddd;
+}
+td.user {
+  display: flex;
+  align-items: center;
+  gap: 10rem;
+}
+
+td.user > img {
+  width: 50rem;
+  height: 50rem;
+
+
+  border-radius: 50%;
+}
+
+td.user a {
+  text-decoration: none;
+ 
+}
+
+td.user a p {
+   font-weight: bold;
+}
+
+tr > td > button {
+  background: none;
+  border: none;
+  color: red;
+  height: 20rem;
+  width: 20rem;
+}
+tr > td > button:hover {
+  font-size: 20rem;
+  cursor: pointer;
+  
+}
+/* table end */
