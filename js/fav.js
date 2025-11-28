@@ -1,4 +1,5 @@
 import { favorites } from './constructors.js';
+import { GithubUser } from './gitAPI.js';
 
 export class favoritesView {
   //estou pegando o parametro que passo em main, fazendo uma copia do constructor e usando aqui composicao ao inves de extends e herancas (usada no curso) creio que assim fica mais moderno e seguro.
@@ -8,7 +9,38 @@ export class favoritesView {
     this.tbody = this.favorites.root.querySelector('table tbody');
 
     this.update();
+    this.onadd();
   }
+  save() {
+    localStorage.setItem(
+      '@github-favorites:',
+      JSON.stringify(this.favorites.userData)
+    );
+  }
+  async add(username) {
+    try {
+      const user = await GithubUser.search(username);
+
+      if (user.login === undefined) {
+        throw new Error('usuario nao encontrado!');
+      }
+
+      this.favorites.userData = [user, ...this.favorites.userData];
+      this.update();
+      this.save();
+    } catch (error) {
+      alert(error.message);
+    }
+  }
+
+  onadd() {
+    const addButton = this.favorites.root.querySelector('.search button');
+    addButton.onclick = () => {
+      const { value } = this.favorites.root.querySelector('.search input');
+      this.add(value);
+    };
+  }
+
   delete(user) {
     //eu nao entendi muito bem como isso funciona, mas, ele limpa o elemento se esse texte der false
     const filterUser = this.favorites.userData.filter(
@@ -17,6 +49,7 @@ export class favoritesView {
     this.favorites.userData = filterUser;
 
     this.update();
+    this.save();
   }
 
   update() {
