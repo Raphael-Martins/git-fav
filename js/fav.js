@@ -19,6 +19,15 @@ export class favoritesView {
   }
   async add(username) {
     try {
+      const userExists = this.favorites.userData.find(
+        (entry) => entry.login === username
+      );
+      console.log(userExists);
+
+      if (userExists) {
+        throw new Error('usuario ja existe');
+      }
+
       const user = await GithubUser.search(username);
 
       if (user.login === undefined) {
@@ -64,6 +73,7 @@ export class favoritesView {
         '.user img'
       ).src = `https://github.com/${user.login}.png`; // aqui eu estou selecionando nos dados que passo dentro da tr criada, a tag de "img". que ta na "table dados" de class "user", tambem criada la em create rows.e nela eu modifico a parte do link corrrespondente a ao user, passando os dados que trago la de userData
       row.querySelector('.user p').textContent = user.name;
+      row.querySelector('.user a').href = `https://github.com/${user.login}`;
       row.querySelector('.user span').textContent = user.login;
       row.querySelector('.repositories').textContent = user.public_repos;
       row.querySelector('.followers').textContent = user.followers;
