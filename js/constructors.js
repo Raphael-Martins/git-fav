@@ -12,6 +12,12 @@ export class favorites {
       JSON.parse(localStorage.getItem('@github-favorites:')) || [];
   }
 
+   save() {
+    localStorage.setItem(
+      '@github-favorites:',
+      JSON.stringify(this.userData)
+    );
+  }
   //versao usando o then
   // add(username) {
   //   GithubUser.search(username).then((user) => {

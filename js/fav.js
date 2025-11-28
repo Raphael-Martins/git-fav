@@ -11,12 +11,7 @@ export class favoritesView {
     this.update();
     this.onadd();
   }
-  save() {
-    localStorage.setItem(
-      '@github-favorites:',
-      JSON.stringify(this.favorites.userData)
-    );
-  }
+ 
   async add(username) {
     try {
       const userExists = this.favorites.userData.find(
@@ -36,7 +31,7 @@ export class favoritesView {
 
       this.favorites.userData = [user, ...this.favorites.userData];
       this.update();
-      this.save();
+      this.favorites.save();
     } catch (error) {
       alert(error.message);
     }
@@ -58,7 +53,7 @@ export class favoritesView {
     this.favorites.userData = filterUser;
 
     this.update();
-    this.save();
+    this.favorites.save();
   }
 
   update() {
