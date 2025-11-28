@@ -8,11 +8,9 @@ export class favorites {
   }
 
   load() {
-    const userData =
+    this.userData =
       JSON.parse(localStorage.getItem('@github-favorites:')) || [];
-    this.userData = [];
   }
-  
 
   //versao usando o then
   // add(username) {
